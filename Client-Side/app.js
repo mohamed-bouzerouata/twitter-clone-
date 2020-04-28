@@ -4,6 +4,8 @@ const loading = document.querySelector('.loading');
 
 loading.style.display = 'none';
 
+let API_URL = 'http://localhost:3000/tweets'
+
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(form);
@@ -14,8 +16,16 @@ form.addEventListener('submit', (e) => {
         name, 
         content,
     }
-    console.log(tweetObj);
-    loading.style.display = '';
-    form.style.display = 'none';
+    
+    form.style.display = 'none'
+    loading.style.display = ''
+
+    fetch(API_URL,{ method: 'POST', body: JSON.stringify(tweetObj), headers : {'content-type': 'application/json' }  })
+    .then(response => {
+        response.json();
+    })
+    // .then(createdTweet => {
+    //     console.log(createdTweet)
+    // })
 
 })
