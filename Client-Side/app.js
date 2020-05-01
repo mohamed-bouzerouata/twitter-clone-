@@ -84,9 +84,14 @@ form.addEventListener('submit', (e) => {
         method: 'POST',
         body: JSON.stringify(obj),
         headers: {
-            'content-type': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
         }
-    });
+    })
+    .then(response => response.json())
+    // .then((createdTweets) => {
+    //     console.log(createdTweets)
+    // })
     
 })
 
